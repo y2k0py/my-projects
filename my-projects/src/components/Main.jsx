@@ -26,26 +26,28 @@ const Main = () => {
             </h1>
 
 
-            <section className="flex flex-col w-full">
-                <p className="text-red-500 text-1xl text-left px-5 mt-5 animate-[fadeIn_0.6s_ease-out]">
+            <section className="flex w-full flex-col">
+                <p className="mx-auto mt-5 max-w-4xl px-5 text-left text-red-500 animate-[fadeIn_0.6s_ease-out]">
                     Hi, I'm a software engineer with a passion for building scalable and efficient systems. I specialize in developing web applications using React, Node.js and Python, and I'm always looking for new challenges to take on.
                 </p>
 
                 <div className="mt-5 flex h-px w-full bg-red-500 animate-[fadeIn_0.7s_ease-out]" />
 
-                <h2 className="text-3xl text-red-500 animate-[fadeIn_0.8s_ease-out] px-6 mt-5 mb-5">My Projects</h2>
-                <ProjectsCarousel />
+                <div className="mx-auto w-full">
+                    <h2 className="mt-5 mb-5 px-5 text-center text-3xl text-red-500 animate-[fadeIn_0.8s_ease-out]">Highlighted projects</h2>
+                    <ProjectsCarousel />
+                </div>
             </section>
 
             <section className="mt-10 h-fit w-full bg-red-950">
-                <div className="flex items-center justify-between pl-6 pt-5">
+                <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-5 pt-5 md:justify-center">
                     <h2 className="text-3xl text-red-500 animate-[fadeIn_0.8s_ease-out]">
                         My Tech Stack
                     </h2>
 
                     <button
                         onClick={() => setExpanded(!expanded)}
-                        className="mr-6 items-end flex text-end"
+                        className="flex items-end text-end md:hidden"
                     >
                         {expanded ? (
                             <Minus className="size-7 text-red-500" />
@@ -55,7 +57,9 @@ const Main = () => {
                     </button>
                 </div>
 
-                <Skills expanded={expanded} setExpanded={setExpanded} />
+                <div className="mx-auto w-full max-w-4xl">
+                    <Skills expanded={expanded} setExpanded={setExpanded} />
+                </div>
             </section>
         </main>
     )

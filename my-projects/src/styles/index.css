@@ -6,12 +6,35 @@ html, body {
     min-height: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Special Gothic Expanded One", sans-serif;
     font-weight: 400;
     font-style: normal;
-    background: linear-gradient(to bottom, #280000 0%, #0f0000 30%, #0f0000 100%);
+    color: #f3e8e8;
+    background: linear-gradient(to bottom, #280000 0%, #140303 32%, #0f0000 100%);
     min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: "Special Gothic Expanded One", ui-sans-serif, sans-serif;
+    font-weight: 400;
+}
+
+img {
+    display: block;
+}
+
+::selection {
+    color: #fff;
+    background: #991b1b;
 }
 
 @keyframes fadeIn {
@@ -32,5 +55,100 @@ body {
     }
     51%, 100% {
         opacity: 0;
+    }
+}
+
+@keyframes fullscreenFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fullscreenZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fullscreenSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fullscreen-fade {
+    animation: fullscreenFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fullscreen-zoom {
+    animation: fullscreenZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fullscreen-slide-up {
+    animation: fullscreenSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fullscreenFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fullscreenZoomOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+}
+
+@keyframes fullscreenSlideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+}
+
+.animate-fullscreen-fade-out {
+    animation: fullscreenFadeOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fullscreen-zoom-out {
+    animation: fullscreenZoomOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fullscreen-slide-down {
+    animation: fullscreenSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

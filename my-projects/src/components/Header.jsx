@@ -13,19 +13,19 @@ const Header = () => {
     const location = useLocation();
 
     return (
-        <header className="left-0 w-full z-50">
+        <header className="w-full">
 
             {/* Navigation */}
-            <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-                <div className="flex items-center gap-2 rounded-full border border-red-900/40 bg-red-950/50 px-3 py-2 backdrop-blur-lg">
+            <nav className="flex justify-center pt-6">
+                <div className="flex items-center gap-2 rounded-full border border-red-900/40 bg-red-950/80 px-3 py-3 backdrop-blur-lg">
                     {tabs.map((tab) => (
                         <Link
                             key={tab.name}
                             to={tab.path}
                             className={`rounded-3xl px-4 py-2 transition-all duration-300 ${
-                                location.pathname === tab.path
+                                location.pathname === tab.path || (tab.path !== "/" && location.pathname.startsWith(tab.path))
                                     ? "border border-red-600 bg-red-950 text-red-500"
-                                    : "border border-red-900/50 text-red-900 hover:bg-red-950/70 hover:text-red-500"
+                                    : "border border-red-900/50 text-red-800 hover:bg-red-950/70 hover:text-red-500"
                             }`}
                         >
                             {tab.name}
@@ -35,7 +35,7 @@ const Header = () => {
             </nav>
 
             {/* Profile image */}
-            <div className="flex flex-col items-center justify-center mt-27">
+            <div className="mt-6 flex flex-col items-center justify-center">
                 <div className="size-24 rounded-full border-2 border-red-600 bg-red-950 p-1 shadow-lg shadow-red-950/50">
                     <img
                         src={profileImage}

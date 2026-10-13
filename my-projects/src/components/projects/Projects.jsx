@@ -1,28 +1,26 @@
 import {projectsList} from "./projectsList.js";
 import ProjectCard from "./ProjectCard.jsx";
-import {Link} from "react-router-dom";
 
 
 const Projects = () => {
     return (
-        <main className="justify-center min-h-screen px-5">
-            <h1 className="text-3xl text-center font-bold text-red-500 pb-6">My projects</h1>
+        <main className="px-5 pb-4">
+            <h1 className="pb-6 text-center text-3xl font-bold text-red-500">Projects</h1>
 
-            <div>
+            <div className="mx-auto flex flex-wrap justify-center gap-4">
                 {projectsList.map((project) => (
-                    <div className="mb-3">
-                        <Link to={`/projects/${project.slug}`}>
-                            <ProjectCard
-                                title={project.title}
-                                image={project.images[0]}
-                                shortDescription={project.short_description}
-                                linkTo={`/projects/${project.slug}`}
-                            />
-                        </Link>
+                    <div key={project.slug} className="w-[min(100%,28rem)] shrink-0">
+                        <ProjectCard
+                            title={project.title}
+                            image={project.images[0]}
+                            shortDescription={project.short_description}
+                            company={project.company}
+                            country={project.country}
+                            linkTo={`/projects/${project.slug}`}
+                        />
                     </div>
                 ))}
             </div>
-
         </main>
     )
 }

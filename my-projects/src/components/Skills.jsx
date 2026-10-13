@@ -89,23 +89,22 @@ const skills = [
 ]
 
 const Skills = ({expanded, setExpanded}) => {
-    // const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="relative flex flex-col px-6 py-4 border-b border-red-600">
+        <div className="relative flex flex-col px-5 py-4">
 
             <div
-                className={`flex flex-col gap-6 overflow-hidden transition-[max-height] duration-500 ${
-                    expanded ? "max-h-[2000px]" : "max-h-45"
+                className={`overflow-hidden transition-[max-height] duration-500 md:columns-2 md:gap-x-12 ${
+                    expanded ? "max-h-[3000px]" : "max-h-45 md:max-h-none"
                 }`}
             >
                 {skills.map((category) => (
-                    <div key={category.title}>
-                        <h3 className="mb-2 font-semibold text-red-500">
-                            {category.title}:
+                    <div key={category.title} className="mb-8 break-inside-avoid text-left md:text-center">
+                        <h3 className="mb-3 text-red-500">
+                            {category.title}
                         </h3>
 
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap justify-start gap-2 md:justify-center">
                             {category.skills.map((skill) => (
                                 <TechStackPill
                                     key={skill.title}
@@ -120,12 +119,12 @@ const Skills = ({expanded, setExpanded}) => {
             </div>
 
             {!expanded && (
-                <div className="pointer-events-none absolute bottom-0 left-0 h-30 w-full bg-linear-to-t from-red-800 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 h-30 w-full bg-linear-to-t from-red-800 to-transparent md:hidden" />
             )}
 
             <button
                 onClick={() => setExpanded(!expanded)}
-                className="relative mt-3 text-sm text-red-500 hover:text-red-400"
+                className="relative mt-3 self-center text-sm text-red-500 hover:text-red-400 md:hidden"
             >
                 {expanded ? "Show less ↑" : "Show more ↓"}
             </button>
